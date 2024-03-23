@@ -37,7 +37,7 @@
                     $arrayOutput[] = $element;
                 }
 
-                return implode(' ',$arrayOutput);
+                return implode(' ', $arrayOutput);
             }
 
             function spinWordsKata(string $str): string {
