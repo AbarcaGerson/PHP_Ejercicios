@@ -33,6 +33,15 @@
         }, str_split($word)));
     }
 
+    function duplicate_encode_kata($word){
+        $word = str_split(strtolower($word));
+        $str = "";
+        foreach($word as $key){
+            (count(array_keys($word,$key))>1) ? $str .= ")" : $str .= "(";
+        }	
+        return $str;			
+    }
+
     echo duplicate_encode("(( @");
 
     ?>
