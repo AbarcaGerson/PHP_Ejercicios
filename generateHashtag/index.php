@@ -22,23 +22,29 @@
     */
 
     function generateHashtag($str) {
-        $response = "";
-        $wordArray = str_split(strtolower($str));
-
-        if(count($wordArray) < 0 || count($wordArray) > 140){
-            $response = "false";
-            return $response;
+        $str = trim($str);
+        if ($str === "") {
+            return false;
         }
 
-        $wordSeparate = explode(' ', $str);
-        foreach($wordSeparate as $element){
-            trim($element);
-            $response = $element;
+        $response = array_map('ucfirst', explode(' ', $str));
+        $hashtag = '#' . implode('', $response);
+
+        if (strlen($hashtag) > 140) {
+            return false;
         }
-        return $wordSeparate;
+
+        return $hashtag;
     }
+
+    function generateHashtagKata($str) {
+  
+        $str = '#' . str_replace(' ', '', ucwords($str));
+        
+        return (strlen($str) > 140 || strlen($str) == 1) ? false : $str;
+     }
     
-    print_r(generateHashtag("Codewars is nice"));
+    print_r(generateHashtagKata("codewars is nice"));
 
     ?>
 </body>
